@@ -1,0 +1,201 @@
+Categories
+----------
+categoryid pk
+categoryname
+icon
+
+brands
+------
+categoryid fk
+brandid
+bradname
+logo
+
+products
+---------
+categoryid fk
+brandid fk
+productid pk
+productname
+image
+
+
+productdetails
+---------------
+categoryid fk
+brandid fk
+productid fk
+productdetailsid pk
+modelno
+description
+color
+price
+offerprice
+stock
+picture
+
+
+backgroundImage:'url(https://media.croma.com/image/upload/v1697816449/Croma%20Assets/CMS/LP%20Page%20Banners/2023/Desktop_-_Navratri_opt.3_glsdyl.jpg)'
+
+import { FormControl, InputLabel, Select, MenuItem, Grid,Paper, TextField, Button, Avatar,maxWidth } from "@mui/material";
+import FolderIcon from '@mui/icons-material/Folder';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { makeStyles } from "@mui/styles";
+import CateroryImg from "../assets/category.png"
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import { useState, useEffect } from "react";
+import { getData, postData } from "../services/FetchNodeServices";
+import Swal from 'sweetalert2'
+import Heading from './projectComponent/Heading';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { DropzoneArea } from "material-ui-dropzone";
+import categoryicon from '../../src/assets/category.png'
+import BrandImg from '../../src/images/brands.png'
+import DetailImg from '../../src/images/detail.png'
+import { Navigate } from "react-router-dom";
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import CategoryIcon from '@mui/icons-material/Category';
+var useStyles = makeStyles({
+   
+root1: {
+    height: '99vh',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+ 
+},
+
+box1: {
+    height: 550,
+    width: '76%',
+    background: '#f2f2f2',
+    marginTop: -610,
+    padding: 30,
+    borderRadius: 10
+}
+,
+
+    box2: {
+        height: 30,
+        width: '86.2%',
+        background: '#f2f2f2',
+      
+        padding: 30,
+        borderRadius: 10,
+        display:"flex",
+        flexDirection:"column",
+
+        
+        
+    },
+    box3: {
+        height: 550,
+        width: '10%',
+        background: '#f2f2f2',
+     
+        padding: 30,
+        borderRadius: 10
+    },
+
+ 
+})
+
+
+export default function Dashboard() {
+    const useStyle = useStyles()
+  
+    
+
+    return (
+        <div className={useStyle.root}>
+         <Paper style={{background:"black"}} elevation={7} className={useStyle.box2}>
+        
+        <div>
+       
+
+      <h1 style={{ color: 'red'  }}> <DashboardIcon/>ELECTRONIC Dashboard</h1>
+     
+</div> 
+    
+
+                </Paper>
+                <Paper elevation={2} className={useStyle.box3}>
+
+    
+          <div style={{display:"flex", flexDirection:"row", justifyContent:"start"}}>
+       
+          <AccountBoxIcon/>
+         
+          User
+          </div>
+
+          <div style={{display:"flex", flexDirection:"row", justifyContent:"start",marginTop:12}}>
+        
+   <CategoryIcon/>
+   Category
+    </div>
+
+    <div style={{display:"flex", flexDirection:"row", justifyContent:"start",marginTop:12}}>
+    
+    <img style={{width:30}} src={BrandImg}/>
+ Brand
+ </div>
+
+          <div style={{display:"flex", flexDirection:"row", justifyContent:"start" , marginTop:12}}>
+    
+          <ProductionQuantityLimitsIcon/>
+        Product
+        
+
+    </div>
+
+
+
+    <div style={{display:"flex", flexDirection:"row", justifyContent:"start",marginTop:12}}>
+    
+    <img style={{width:15}} src={DetailImg}/>
+ ProductDetails
+ </div>
+
+    
+        
+            
+         
+                </Paper>
+                <div className={useStyle.root1}>
+      <Paper elevation={1} style={{background:"white",justifyContent:'center'}} className={useStyle.box1}>
+<div>
+    Hi
+</div>
+</Paper>
+            </div>
+      
+  </div>
+  
+
+   
+ {/* <div style={{ width: '100%', color: 'white', fontSize: '12px', fontWeight: 'bold', marginTop: '3%' }}>
+                RAM
+            </div>
+
+            <div style={{ color: '#fff', fontSize: '12px', marginTop: '3%' }}>
+                <Button style={{ color: '#fff', borderColor: 'gray', fontSize: 12, padding: '8px 10px 8px', fontWeight: 'bold', textTransform: 'none' }} size='small' variant='outlined'>8.0</Button>
+                <Button style={{ color: '#fff', marginLeft: '3%', borderColor: 'gray', fontSize: 12, padding: '8px 10px 8px', fontWeight: 'bold', textTransform: 'none' }} size="small" variant='outlined'>16.0</Button>
+            </div>
+
+
+            <div style={{ width: '100%', color: 'white', fontSize: '12px', fontWeight: 'bold', marginTop: '3%' }}>
+                Internal Storage
+            </div> */}
+
+            {/* <div style={{ color: '#fff', fontSize: '12px', marginTop: '3%' }}>
+                <Button style={{ color: '#fff', borderColor: 'gray', fontSize: 12, padding: '8px 10px 8px', fontWeight: 'bold', textTransform: 'none' }} size='small' variant='outlined'>128 GB</Button>
+                <Button style={{ color: '#fff', marginLeft: '3%', borderColor: 'gray', fontSize: 12, padding: '8px 10px 8px', fontWeight: 'bold', textTransform: 'none' }} size="small" variant='outlined'>256 GB</Button>
+            </div> */}
+
+    )
+}
+
+
+
+
